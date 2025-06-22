@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Apply Inter font to the entire body */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
+    {% if messages %}
+        <div id="messages-container" class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md">
+            {% for message in messages %}
+                <div class="mb-4 px-4 py-3 rounded shadow-lg text-white
+                    {% if message.tags == 'success' %}
+                        bg-green-600
+                    {% elif message.tags == 'error' or message.tags == 'danger' %}
+                        bg-red-600
+                    {% elif message.tags == 'warning' %}
+                        bg-yellow-500
+                    {% else %}
+                        bg-blue-600
+                    {% endif %}
+                ">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        <script>
+            setTimeout(function() {
+                var el = document.getElementById('messages-container');
+                if (el) el.style.display = 'none';
+            }, 5000);
+        </script>
+    {% endif %}
+    {% include "components/pop/user_creation.html" with cate=user_categories %}
+    {% block content %}{% endblock %}
+</body>
+</html>
