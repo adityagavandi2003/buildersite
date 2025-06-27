@@ -200,3 +200,5 @@ class CustomerView(View):
             messages.error(
                 request, "Failed to update customer.Please check the form and try again.")
             return redirect(f"/customer/{customer_id}")
+
+

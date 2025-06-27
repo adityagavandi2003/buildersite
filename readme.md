@@ -74,6 +74,8 @@ Below are the available screenshots from the `assets` folder:
   └── ...
 ```
 
+##
+this project made for only 
 ## Contributing
 
 Contributions are welcome! Please open issues or submit pull requests.
